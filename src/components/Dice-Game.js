@@ -38,6 +38,7 @@ class diceGame extends React.Component {
         result: [null, null],
     }
 
+    // hold the score for the player and move the turn
     holdIt = () => {
         // check if user did first roll the dice, then send it to the game and initiallized values.
         if (this.state.isFirstRolled === true) {
@@ -48,7 +49,9 @@ class diceGame extends React.Component {
         }
     }
 
-    roleIt = () => {
+    // roll the dice and sum the current score
+    roleIt = (e) => {
+
 
         // randomize 1-6
         const rollResultA = Math.floor(Math.random() * 6)
@@ -63,12 +66,13 @@ class diceGame extends React.Component {
             this.props.diceResult(this.state.result)
         })
     }
-
+    
+    // className={`${this.props.scaleMe} player player${this.props.id}`
     render() {
         return (
-            <div className="game-managment">
-                <button className="btn roll-btn" onClick={this.roleIt}> <i class="fas fa-dice"></i> Roll</button>
-                <button className="btn" onClick={this.holdIt}> <i class="fas fa-pause"></i> Hold</button>
+            <div className={`${this.props.className} game-managment`}>
+                <button className="btn game-btn roll-btn" onClick={this.roleIt}> <i className="fas fa-dice"></i> Roll</button>
+                <button className="btn game-btn" onClick={this.holdIt}> <i className="fas fa-pause"></i> Hold</button>
                 {this.state.isFirstRolled &&
                     <div className="dices">
                         <div className="roll" >{this.state.myDice[this.state.result[0] - 1].imgDiv}</div>
