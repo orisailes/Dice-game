@@ -2,31 +2,35 @@ import React from 'react'
 
 class inputFirstName extends React.Component {
 
-    state={
-        value1:``,
-        value2:``,
-        isTrolling:false
+    state = {
+        value1: ``,
+        value2: ``,
+        isTrolling: false
     }
 
-    onChange=(e)=>{
-        this.setState({[e.target.id]:e.target.value})
+    onChange = (e) => {
+        this.setState({ [e.target.id]: e.target.value })
     }
 
-    sendNames=()=>{
-        if(this.state.value1 !== `` && this.state.value2 !== ``){
+    sendNames = () => {
+        if (this.state.value1 !== `` && this.state.value2 !== ``) {
             this.props.getFirstName(this.state)
-        }else{
-            this.setState({isTrolling:true})
+        } else {
+            this.setState({ isTrolling: true })
         }
     }
 
     render() {
         return (
             <div className="names-input-container">
-                <input id="value1" onChange={this.onChange} value={this.state.value1} className="new-game-input new-game-input-1" type="text" />
-                <input id="value2" onChange={this.onChange} value={this.state.value2} className="new-game-input new-game-input-1" type="text" />
-                <button className="btn" onClick={this.sendNames}> <i class="fas fa-play-circle"></i> START GAME!</button>
-                <div className={this.state.isTrolling?'fix-names':'hidden'}><h4>Please insert valid names.</h4></div>
+                <div className="flex">
+                    <input id="value1" onChange={this.onChange} value={this.state.value1} className="new-game-input new-game-input-1" type="text" />
+                    <input id="value2" onChange={this.onChange} value={this.state.value2} className="new-game-input new-game-input-1" type="text" />
+                </div>
+                <div className="start-game-btn-container">
+                    <button className="btn" onClick={this.sendNames}> <i class="fas fa-play-circle"></i> START GAME!</button>
+                </div>
+                    <div className={this.state.isTrolling ? 'fix-names' : 'hidden'}><h4>Please insert valid names.</h4></div>
             </div>
         )
     }

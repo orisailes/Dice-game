@@ -9,7 +9,7 @@
 
 /* utils */
 .hidden {
-    display: none !important;
+    visibility: hidden !important;
 }
 
 input {
@@ -39,7 +39,7 @@ input:focus {
     cursor: pointer;
 }
 
-.btn:focus{
+.btn:focus {
     outline: none;
 }
 
@@ -59,20 +59,29 @@ input:focus {
 
 .names-input-container {
     height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
 }
 
 .names-input-container .btn {
-    grid-column: span 2;
-    width: 90%;
-    margin: auto;
     font-size: 2rem;
 }
 
 .names-input-container .btn:focus {
     outline: none;
+}
+
+.flex {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+}
+
+.start-game-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
 }
 
 .fix-names {
@@ -115,6 +124,7 @@ input:focus {
 }
 
 .game-managment {
+    display: inline-block;
     position: relative;
     left: 28vw;
     bottom: 18vh;
@@ -167,9 +177,9 @@ input:focus {
 
 .dices {
     display: flex;
-    position: absolute;
-    bottom: 30vh;
-    left: 4vw;
+    position: relative;
+    bottom: 45vh;
+    left: 4.5vw;
 }
 
 .dices img {
@@ -199,7 +209,7 @@ input:focus {
 .player1 img,
 .player1 p {
     opacity: 0;
-    animation: makeMeCome 2.5s forwards;
+    animation: bringMe 2.5s forwards;
     transform: translateX(-100px);
 }
 
@@ -207,7 +217,7 @@ input:focus {
 .player2 p {
     opacity: 0;
     transform: translateX(100px);
-    animation: makeMeCome 2.5s forwards;
+    animation: bringMe 2.5s forwards;
     animation-delay: 1s;
 }
 
@@ -221,7 +231,7 @@ input:focus {
     height: 40vh;
 }
 
-.player-heading{
+.player-heading {
     font-size: 2.2rem !important;
 }
 
@@ -237,7 +247,7 @@ input:focus {
     }
 }
 
-@keyframes makeMeCome {
+@keyframes bringMe {
     to {
         opacity: 1;
         transform: translateX(0);
@@ -260,6 +270,33 @@ input:focus {
     }
 
     100% {
+        transform: scale(1);
+    }
+}
+
+.make-big-btn > i{
+    animation: makeIconBig 2s ease-in-out infinite !important;
+}
+.make-big-btn{
+    animation: makeBigBtn 2s ease-in-out infinite !important;
+}
+
+@keyframes makeBigBtn{
+    50%{
+        transform: scale(2);
+        color: greenyellow;
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+@keyframes makeIconBig{
+    50%{
+        transform: scale(1.2) rotate(0.3turn);
+        color: greenyellow;
+    }
+    100%{
         transform: scale(1);
     }
 }

@@ -1,0 +1,101 @@
+@media (min-width: 768px) and (max-width:1280px){
+  .player-img {
+    height: 35vh;
+  }
+
+  .player * p {
+    font-size: 1rem !important;
+  }
+
+  .game-managment {
+    height: 20vw;
+    bottom: 10vh;
+  }
+
+  .game-managment .btn {
+    font-size: 1.5rem;
+  }
+
+  .dices img {
+   height: 10vh;
+  }
+
+ @keyframes scaleMe {
+   to{
+     transform: scale(1.2);
+     font-weight: bolder;
+   }
+ }
+
+ .max-score-input .btn{
+   width: 15vw;
+ }
+}
+
+@media (min-width:600px) and (max-width:768px){
+  .player-img {
+    height: 25vh;
+  }
+
+  .player * p {
+    font-size: 0.8rem !important;
+  }
+
+  .dices{
+    flex-direction: column;
+    bottom: 55vh;
+    left: 8vw;
+  }
+
+  .dices img {
+    height: 8vh;
+   }
+
+   .game-managment {
+    bottom: 0;
+  }
+
+  .game-managment .btn {
+    font-size: 1.3rem;
+  }
+
+   .max-score-input .btn{
+   width: 15vw;
+ }
+
+ .new-game-btn{
+  top: 70vh;
+  right: 28vw;
+  font-size: 1rem;
+  z-index: 1;
+ }
+
+ @keyframes roll {
+  to {
+      transform: rotate(0);
+  }
+}
+
+}
+
+@media (max-width:600px){
+  .game-container .player{
+    display: none;
+  }
+
+  .btn{
+    display: none;
+  }
+
+  input{
+    display: none;
+  }
+
+  .game-container::after{
+    content: 'please use landscape in order to play :)';
+    position: absolute;
+    left: 20%;
+    margin: auto;
+    top: 70%;
+  }
+}

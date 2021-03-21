@@ -4,10 +4,7 @@ import LimitScoreInput from './LimitScoreInput'
 import Player from './Player'
 import NewGame from './NewGame'
 import InitializeName from './InitializeName'
-//!mission:
-//check for bugs
-//add sound?
-//think on more
+
 
 
 class Game extends React.Component {
@@ -64,9 +61,11 @@ class Game extends React.Component {
    diceResult = async (info) => {
     let numToAdd = info[0] + info[1];
     if (numToAdd === 12) {
-      {document.querySelectorAll(`.game-btn`).forEach((e)=>e.classList.add(`hidden`))}
+      {document.querySelector(`.roll-btn`).classList.add(`hidden`)}
+      {document.querySelector(`.hold-btn`).classList.add(`hidden`)}
       await this.wait(3000)
-      {document.querySelectorAll(`.game-btn`).forEach((e)=>e.classList.remove(`hidden`))}
+      {document.querySelector(`.roll-btn`).classList.remove(`hidden`)}
+      {document.querySelector(`.hold-btn`).classList.remove(`hidden`)}
       this.switchPlayer()
     }
     else {
@@ -77,8 +76,7 @@ class Game extends React.Component {
         temp[1].currentScore += numToAdd;
       }
       if (this.whoTurnIs().currentScore + this.whoTurnIs().totalScore >= this.state.winningScore) {
-        this.setState({ theWinnerIs: this.whoTurnIs().id },
-          () => { console.log(this.state) })
+        this.setState({ theWinnerIs: this.whoTurnIs().id })
       }
 
       this.setState({ players: temp })
@@ -160,7 +158,7 @@ class Game extends React.Component {
         <div className="game-container">
           <Player className={this.state.theWinnerIs === 1 ? "winner" : ''} scaleMe={this.state.players[0].isHisTurn ? "show-me" : ''} id="1" name={this.state.playersNames[0]} playerCurrentScore={this.state.players[0].currentScore} playerTotalScore={this.state.players[0].totalScore} />
           <Player className={this.state.theWinnerIs === 2 ? "winner" : ''} scaleMe={this.state.players[1].isHisTurn ? "show-me" : ''} id="2" name={this.state.playersNames[1]} playerCurrentScore={this.state.players[1].currentScore} playerTotalScore={this.state.players[1].totalScore} />
-          <NewGame restartGame={this.restartGame} />
+          <NewGame className={this.state.theWinnerIs !== null? "make-big-btn" : ``} restartGame={this.restartGame} />
           <DiceGame className={this.state.theWinnerIs !== null ? "hidden" : ``} diceResultToKeep={this.diceResultToKeep} diceResult={this.diceResult} />
           <LimitScoreInput className={this.state.theWinnerIs !== null ? "hidden" : ``} getMaxScore={this.getMaxScore} />
         </div>

@@ -50,9 +50,8 @@ class diceGame extends React.Component {
     }
 
     // roll the dice and sum the current score
-    roleIt = (e) => {
-
-
+    roleIt = async (e) => {
+        
         // randomize 1-6
         const rollResultA = Math.floor(Math.random() * 6)
         const rollResultB = Math.floor(Math.random() * 6)
@@ -72,7 +71,7 @@ class diceGame extends React.Component {
         return (
             <div className={`${this.props.className} game-managment`}>
                 <button className="btn game-btn roll-btn" onClick={this.roleIt}> <i className="fas fa-dice"></i> Roll</button>
-                <button className="btn game-btn" onClick={this.holdIt}> <i className="fas fa-pause"></i> Hold</button>
+                <button className="btn game-btn hold-btn" onClick={this.holdIt}> <i className="fas fa-pause"></i> Hold</button>
                 {this.state.isFirstRolled &&
                     <div className="dices">
                         <div className="roll" >{this.state.myDice[this.state.result[0] - 1].imgDiv}</div>
